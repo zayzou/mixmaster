@@ -5,7 +5,6 @@ export default function CocktailList({ meals }) {
   if (!meals) {
     return <h4 style={{ textAlign: "center" }}>No Matching Meals Found...</h4>;
   }
-
   const formattedMeals = meals.map((meal) => {
     const { idMeal, strMeal, strCategory, strMealThumb, strTags } = meal;
     return {
