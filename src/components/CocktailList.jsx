@@ -7,12 +7,13 @@ export default function CocktailList({ meals }) {
   }
 
   const formattedMeals = meals.map((meal) => {
-    const { idMeal, strMeal, strCategory, strMealThumb } = meal;
+    const { idMeal, strMeal, strCategory, strMealThumb, strTags } = meal;
     return {
       id: idMeal,
       name: strMeal,
       category: strCategory,
       thumb: strMealThumb,
+      tags: strTags,
     };
   });
   return (
