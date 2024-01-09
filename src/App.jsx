@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import {
   About,
-  Cocktail,
+  Meal,
   Error,
   HomeLayout,
   Landing,
@@ -23,8 +23,8 @@ const router = createBrowserRouter([
         errorElement: <SinglePageError />,
       },
       {
-        path: "cocktail",
-        element: <Cocktail />,
+        path: "meals/:id",
+        element: <Meal />,
       },
       {
         path: "newsletter",

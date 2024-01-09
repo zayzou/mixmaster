@@ -2,7 +2,7 @@ import axios from "axios";
 import { useLoaderData } from "react-router-dom";
 
 import SearchForm from "../components/SearchForm";
-import CocktailList from "../components/CocktailList";
+import CocktailList from "../components/MealList";
 const cocktailSearchUrl =
   "https://www.themealdb.com/api/json/v1/1/search.php?s=";
 

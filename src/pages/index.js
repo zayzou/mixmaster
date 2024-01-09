@@ -1,5 +1,5 @@
 export { default as About } from "./About.jsx";
-export { default as Cocktail } from "./Cocktail.jsx";
+export { default as Meal } from "./Meal.jsx";
 export { default as Error } from "./Error.jsx";
 export { default as SinglePageError } from "./SinglePageError.jsx";
 export { default as HomeLayout } from "./HomeLayout.jsx";

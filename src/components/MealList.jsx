@@ -1,6 +1,6 @@
 import React from "react";
 import Wrapper from "../assets/wrappers/CocktailList";
-import CocktailCard from "./CocktailCard";
+import CocktailCard from "./MealCard";
 export default function CocktailList({ meals }) {
   if (!meals) {
     return <h4 style={{ textAlign: "center" }}>No Matching Meals Found...</h4>;
