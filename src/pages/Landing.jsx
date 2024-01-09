@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useLoaderData } from "react-router-dom";
-import Wrapper from "../assets/wrappers/CocktailList";
+
+import SearchForm from "../components/SearchForm";
+import CocktailList from "../components/CocktailList";
 const cocktailSearchUrl =
   "https://www.themealdb.com/api/json/v1/1/search.php?s=";
 
@@ -14,12 +16,8 @@ function Landing() {
 
   return (
     <>
-      <h2>{searchTerm}</h2>
-      <Wrapper>
-        {meals.map((meal) => {
-          return <li key={meal.idMeal}>{meal.strMeal}</li>;
-        })}
-      </Wrapper>
+      <SearchForm />
+      <CocktailList meals={meals} />
     </>
   );
 }
