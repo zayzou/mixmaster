@@ -1,7 +1,7 @@
 import React from "react";
-
+import Wrapper from "../assets/wrappers/SearchForm";
 function SearchForm() {
-  return <div>SearchForm</div>;
+  return <Wrapper>SearchForm</Wrapper>;
 }
 
 export default SearchForm;
