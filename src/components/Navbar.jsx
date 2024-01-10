@@ -7,7 +7,7 @@ function Navbar() {
   return (
     <Wrapper>
       <div className="nav-center">
-        <span className="logo">Mixmaster</span>
+        <span className="logo">FlavorMix</span>
         <div className="nav-links">
           <NavLink to="/" className="nav-link">
             Home
