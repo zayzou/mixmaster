@@ -18,7 +18,7 @@ function Landing() {
 
   return (
     <>
-      <SearchForm />
+      <SearchForm searchTerm={searchTerm} />
       <CocktailList meals={meals} />
     </>
   );
