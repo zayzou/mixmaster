@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 const Wrapper = styled.article`
   background: var(--white);
   box-shadow: var(--shadow-2);
@@ -19,13 +19,14 @@ const Wrapper = styled.article`
     h4,
     h5 {
       margin-bottom: 0.5rem;
+      color: var(--grey-700);
     }
     h4 {
       font-weight: 700;
     }
     p {
       margin-bottom: 1rem;
-      color: var(--grey-500);
+      color: var(--grey-700);
     }
   }
 `;
