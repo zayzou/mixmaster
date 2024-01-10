@@ -1,8 +1,13 @@
-import React from "react";
+import { Form } from "react-router-dom";
 
+export const action = async ({ request }) => {
+  const formData = await request.formData();
+  const data = Object.fromEntries(formData);
+  return data;
+};
 const Newsletter = () => {
   return (
-    <form className="form">
+    <Form className="form" method="post">
       <h4 style={{ textAlign: "center", marginBottom: "2rem" }}>
         our newsletter
       </h4>
@@ -25,6 +30,7 @@ const Newsletter = () => {
           last name
         </label>
         <input
+          
           type="text"
           className="form-input"
           name="lastName"
@@ -52,7 +58,7 @@ const Newsletter = () => {
       >
         submit
       </button>
-    </form>
+    </Form>
   );
 };
 
