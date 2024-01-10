@@ -162,7 +162,7 @@ ul {
 .btn {
   cursor: pointer;
   color: var(--white);
-  background: var(--primary-500);
+  background: var(--primary-400);
   border: transparent;
   border-radius: var(--borderRadius);
   letter-spacing: var(--letterSpacing);
@@ -177,7 +177,7 @@ ul {
   -o-border-radius: var(--borderRadius);
 }
 .btn:hover {
-  background: var(--primary-700);
+  background: var(--primary-500);
   box-shadow: var(--shadow-3);
 }
 .btn-hipster {
@@ -213,7 +213,7 @@ ul {
 .form {
   width: 100%;
   max-width: var(--fixed-width);
-  background: var(--white);
+  background: var(--primary-800);
   border-radius: var(--borderRadius);
   box-shadow: var(--shadow-2);
   padding: 2rem 2.5rem;
