@@ -1,39 +1,47 @@
 import axios from "axios";
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, Navigate, useLoaderData } from "react-router-dom";
 import Wrapper from "../assets/wrappers/CocktailPage";
 
 const url = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=";
+
 export const loader = async ({ params }) => {
-  const { id } = params;
-  const response = await axios.get(`${url}${id}`);
-  const [meal] = response.data.meals;
+  try {
+    const { id } = params;
+    const response = await axios.get(`${url}${id}`);
+    const [meal] = response.data.meals;
 
-  let ingredients = new Map();
-  for (let index = 1; index < 20; index++) {
-    const ing = `strIngredient${index}`;
-    if (!meal[ing]) {
-      break;
+    let ingredients = new Map();
+    for (let index = 1; index < 20; index++) {
+      const ing = `strIngredient${index}`;
+      if (!meal[ing]) {
+        break;
+      }
+      const measure = `strMeasure${index}`;
+      ingredients.set(meal[ing], meal[measure]);
     }
-    const measure = `strMeasure${index}`;
-    ingredients.set(meal[ing], meal[measure]);
-  }
 
-  return {
-    id: meal.idMeal,
-    name: meal.strMeal,
-    category: meal.strCategory,
-    thumb: meal.strMealThumb,
-    tags: meal.strTags,
-    youtube: meal.strYoutube,
-    area: meal.strArea,
-    instructions: meal.strInstructions,
-    source: meal.strSource,
-    ingredients: ingredients,
-  };
+    return {
+      id: meal.idMeal,
+      name: meal.strMeal,
+      category: meal.strCategory,
+      thumb: meal.strMealThumb,
+      tags: meal.strTags,
+      youtube: meal.strYoutube,
+      area: meal.strArea,
+      instructions: meal.strInstructions,
+      source: meal.strSource,
+      ingredients: ingredients,
+    };
+  } catch (error) {
+    return null;
+  }
 };
+
 const Meal = () => {
   const meal = useLoaderData();
-  console.log(meal);
+  if (!meal) {
+    return <Navigate to="/" />;
+  }
   const {
     id,
     name,
@@ -47,7 +55,7 @@ const Meal = () => {
     ingredients,
   } = meal;
   const ings = [...ingredients.entries()];
-  // console.log(ings);
+
   return (
     <Wrapper>
       <header>
