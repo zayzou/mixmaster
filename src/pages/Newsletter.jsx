@@ -22,7 +22,7 @@ const Newsletter = () => {
   const isSubmitting = navigation.state === "submitting";
   console.log(navigation);
   return (
-    <Form className="form" method="post">
+    <Form className="form" method="post" netlify>
       <h4 style={{ textAlign: "center", marginBottom: "2rem" }}>
         our newsletter
       </h4>
