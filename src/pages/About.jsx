@@ -4,12 +4,14 @@ export default function About() {
     <Wrapper>
       <h3>About Us</h3>
       <p>
-        Introducing "MixMaster," the ultimate party sidekick app that fetches
-        cocktails from the hilarious Cocktails DB API. With a flick of your
-        finger, you'll unlock a treasure trove of enchanting drink recipes
-        that'll make your taste buds dance and your friends jump with joy. Get
-        ready to shake up your mixology game, one fantastical mocktail at a
-        time, and let the laughter and giggles flow!
+        Introducing "<strong>FlavorMix</strong>"! 🌮🍲 We love good food and are
+        convinced that cooking with fresh ingredients is not only good for the
+        body but also for the spirit. However, we also know how challenging it
+        is to find recipe ideas for every day in the hustle and bustle of daily
+        life. That's why we developed <strong>FlavorMix</strong>! 🍽️ An online
+        platform that makes everyday cooking easy, even in stressful moments –
+        for everyone who loves to eat well and healthy, and is looking for great
+        recipes .✨
       </p>
     </Wrapper>
   );
