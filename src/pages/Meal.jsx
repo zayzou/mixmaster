@@ -1,49 +1,60 @@
 import axios from "axios";
 import { Link, Navigate, useLoaderData } from "react-router-dom";
 import Wrapper from "../assets/wrappers/CocktailPage";
-
+import { useQuery } from "@tanstack/react-query";
 const url = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=";
 
-export const loader = async ({ params }) => {
-  try {
-    const { id } = params;
-    const response = await axios.get(`${url}${id}`);
-    const [meal] = response.data.meals;
+const fetchMealQuery = (id) => {
+  return {
+    queryKey: ["meal", id],
+    queryFn: async () => {
+      try {
+        const response = await axios.get(`${url}${id}`);
+        const [meal] = response.data.meals;
 
-    let ingredients = new Map();
-    for (let index = 1; index < 20; index++) {
-      const ing = `strIngredient${index}`;
-      if (!meal[ing]) {
-        break;
+        let ingredients = new Map();
+        for (let index = 1; index < 20; index++) {
+          const ing = `strIngredient${index}`;
+          if (!meal[ing]) {
+            break;
+          }
+          const measure = `strMeasure${index}`;
+          ingredients.set(meal[ing], meal[measure]);
+        }
+
+        return {
+          name: meal.strMeal,
+          category: meal.strCategory,
+          thumb: meal.strMealThumb,
+          tags: meal.strTags,
+          youtube: meal.strYoutube,
+          area: meal.strArea,
+          instructions: meal.strInstructions,
+          source: meal.strSource,
+          ingredients: ingredients,
+        };
+      } catch (error) {
+        return null;
       }
-      const measure = `strMeasure${index}`;
-      ingredients.set(meal[ing], meal[measure]);
-    }
-
-    return {
-      id: meal.idMeal,
-      name: meal.strMeal,
-      category: meal.strCategory,
-      thumb: meal.strMealThumb,
-      tags: meal.strTags,
-      youtube: meal.strYoutube,
-      area: meal.strArea,
-      instructions: meal.strInstructions,
-      source: meal.strSource,
-      ingredients: ingredients,
-    };
-  } catch (error) {
-    return null;
-  }
+    },
+  };
 };
+export const loader =
+  (queryClient) =>
+  async ({ params }) => {
+    const { id } = params;
+    await queryClient.ensureQueryData(fetchMealQuery(id));
+    return id;
+  };
 
 const Meal = () => {
-  const meal = useLoaderData();
+  const id = useLoaderData();
+  const { data: meal } = useQuery(fetchMealQuery(id));
+
   if (!meal) {
     return <Navigate to="/" />;
   }
   const {
-    id,
     name,
     category,
     thumb,

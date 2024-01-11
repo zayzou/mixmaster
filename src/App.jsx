@@ -36,7 +36,7 @@ const router = createBrowserRouter([
       },
       {
         path: "meals/:id",
-        loader: mealLoader,
+        loader: mealLoader(queryClient),
         element: <Meal />,
         errorElement: <SinglePageError />,
       },
